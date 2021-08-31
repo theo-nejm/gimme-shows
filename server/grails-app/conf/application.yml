@@ -1,0 +1,201 @@
+---
+grails:
+    profile: react
+    codegen:
+        defaultPackage: bandevents.grails4
+    gorm:
+        reactor:
+            # Whether to translate GORM events into Reactor events
+            # Disabled by default for performance reasons
+            events: false
+info:
+    app:
+        name: 'bandevents-grails4'
+        version: '1.0.0'
+        grailsVersion: '4.0.11'
+spring:
+    jmx:
+        unique-names: true
+    main:
+        banner-mode: "off"
+    groovy:
+        template:
+            check-template-location: false
+    devtools:
+        restart:
+            additional-exclude:
+                - '*.gsp'
+                - '**/*.gsp'
+                - '*.gson'
+                - '**/*.gson'
+                - 'logback.groovy'
+                - '*.properties'
+management:
+    endpoints:
+        enabled-by-default: false
+
+---
+grails:
+    mime:
+        disable:
+            accept:
+                header:
+                    userAgents:
+                        - Gecko
+                        - WebKit
+                        - Presto
+                        - Trident
+        types:
+            json:
+              - application/json
+              - text/json   
+            hal:
+              - application/hal+json
+              - application/hal+xml  
+            xml:
+              - text/xml
+              - application/xml                                 
+            atom: application/atom+xml
+            css: text/css
+            csv: text/csv
+            js: text/javascript
+            rss: application/rss+xml
+            text: text/plain
+            all: '*/*'            
+    urlmapping:
+        cache:
+            maxsize: 1000
+    controllers:
+        defaultScope: singleton
+    converters:
+        encoding: UTF-8
+
+---
+grails:
+    cors:
+        enabled: true
+---
+hibernate:
+    cache:
+        queries: false
+        use_second_level_cache: false
+        use_query_cache: false
+dataSource:
+    pooled: true
+    jmxExport: true
+    logSql: true
+    driverClassName: "com.mysql.jdbc.Driver"
+    username: 'bandevents'
+    password: 'bandaspass.0.1'
+
+environments:
+    development:
+        dataSource:
+            dbCreate: update
+            url: jdbc:mysql://localhost/restbandevents
+    test:
+        dataSource:
+            dbCreate: update
+            url: jdbc:mysql://localhost/restbandevents
+    production:
+        dataSource:
+            dbCreate: update
+            url: jdbc:mysql://localhost/restbandevents
+            properties:
+                jmxEnabled: true
+                initialSize: 5
+                maxActive: 50
+                minIdle: 5
+                maxIdle: 25
+                maxWait: 10000
+                maxAge: 600000
+                timeBetweenEvictionRunsMillis: 5000
+                minEvictableIdleTimeMillis: 60000
+                validationQuery: SELECT 1
+                validationQueryTimeout: 3
+                validationInterval: 15000
+                testOnBorrow: true
+                testWhileIdle: true
+                testOnReturn: false
+                jdbcInterceptors: ConnectionState
+                defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
+
+---
+grails:
+    plugin:
+        springsecurity:
+            userLookup:
+                userDomainClassName: bandevents.grails4.User
+                authorityJoinClassName: bandevents.grails4.UserRole
+            authority:
+                className: bandevents.grails4.Role
+            filterChain:
+                chainMap:
+                    -
+                        pattern: /assets/**
+                        filters: none
+                    -
+                        pattern: /**/js/**
+                        filters: none
+                    -
+                        pattern: /**/css/**
+                        filters: none
+                    -
+                        pattern: /**/images/**
+                        filters: none
+                    - # Stateless chain
+                        pattern: /api/**
+                        filters: JOINED_FILTERS,-anonymousAuthenticationFilter,-exceptionTranslationFilter,-authenticationProcessingFilter,-securityContextPersistenceFilter,-rememberMeAuthenticationFilter
+                    - # Traditional Chain
+                        pattern: /**
+                        filters: JOINED_FILTERS,-restTokenValidationFilter,-restExceptionTranslationFilter
+                controllerAnnotations:
+                    staticRules:
+                        -
+                            pattern: /
+                            access:
+                                - permitAll
+                        -
+                            pattern: /error
+                            access:
+                                - permitAll
+                        -
+                            pattern: /index
+                            access:
+                                - permitAll
+                        -
+                            pattern: /index.gsp
+                            access:
+                                - permitAll
+                        -
+                            pattern: /shutdown
+                            access:
+                                - permitAll
+                        -
+                            pattern: /assets/**
+                            access:
+                                - permitAll
+                        -
+                            pattern: /**/js/**
+                            access:
+                                - permitAll
+                        -
+                            pattern: /**/css/**
+                            access:
+                                - permitAll
+                        -
+                            pattern: /**/images/**
+                            access:
+                                - permitAll
+                        -
+                            pattern: /**/favicon.ico/**
+                            access:
+                                - permitAll
+                        -
+                          pattern: /bands/**
+                          access:
+                              - permitAll
+                        -
+                          pattern: /events/**
+                          access:
+                              - permitAll

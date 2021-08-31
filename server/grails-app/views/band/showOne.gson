@@ -1,0 +1,7 @@
+import bandevents.grails4.Band
+
+model {
+    Band band
+}
+
+json g.render(template: 'band', model: [band: band])

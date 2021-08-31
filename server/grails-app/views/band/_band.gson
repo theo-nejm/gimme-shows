@@ -1,0 +1,10 @@
+import bandevents.grails4.Band
+
+model {
+    Band band
+}
+
+json {
+    id band.id
+    name band.name
+}
