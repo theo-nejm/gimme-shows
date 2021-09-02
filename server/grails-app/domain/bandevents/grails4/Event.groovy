@@ -2,7 +2,6 @@ package bandevents.grails4
 
 import grails.rest.Resource
 
-@Resource(uri = '/api/events')
 class Event {
     String name
     Date date

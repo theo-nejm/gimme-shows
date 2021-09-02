@@ -2,6 +2,8 @@ package bandevents.grails4
 
 import grails.plugin.springsecurity.annotation.Secured
 import grails.validation.ValidationException
+
+import static org.springframework.http.HttpStatus.BAD_REQUEST
 import static org.springframework.http.HttpStatus.CREATED
 import static org.springframework.http.HttpStatus.NOT_FOUND
 import static org.springframework.http.HttpStatus.NO_CONTENT
@@ -9,7 +11,7 @@ import static org.springframework.http.HttpStatus.OK
 
 import grails.gorm.transactions.Transactional
 
-@Secured(['permitAll'])
+@Secured(['ROLE_ADMIN', 'ROLE_USER'])
 class EventController {
     static responseFormats = ['json', 'xml']
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
@@ -71,11 +73,12 @@ class EventController {
 
     @Transactional
     def delete(Long id) {
-        if (id == null || eventService.delete(id) == null) {
-            render status: NOT_FOUND
-            return
+        def event = Event.findById(id)
+        if(event) {
+            event.delete()
+        } else {
+            render status: BAD_REQUEST
         }
-
         render status: NO_CONTENT
     }
 }

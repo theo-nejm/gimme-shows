@@ -1,4 +1,5 @@
 import bandevents.grails4.Band
+import bandevents.grails4.Event
 
 model {
     Band band
@@ -7,4 +8,13 @@ model {
 json {
     id band.id
     name band.name
+    if(band.events) {
+        events band.events, { Event event ->
+            name event.name
+            date event.date
+            bands event.bands, { Band band ->
+                name band.name
+            }
+        }
+    }
 }

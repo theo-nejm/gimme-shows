@@ -1,0 +1,17 @@
+import bandevents.grails4.Role
+import bandevents.grails4.User
+
+model {
+    List<User> users
+}
+
+json {
+    users users, { User user ->
+        id user.id
+        username user.username
+        authorities user.authorities, { Role role ->
+            id role.id
+            authority role.authority
+        }
+    }
+}

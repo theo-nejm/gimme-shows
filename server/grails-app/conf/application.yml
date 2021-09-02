@@ -131,18 +131,6 @@ grails:
                 className: bandevents.grails4.Role
             filterChain:
                 chainMap:
-                    -
-                        pattern: /assets/**
-                        filters: none
-                    -
-                        pattern: /**/js/**
-                        filters: none
-                    -
-                        pattern: /**/css/**
-                        filters: none
-                    -
-                        pattern: /**/images/**
-                        filters: none
                     - # Stateless chain
                         pattern: /api/**
                         filters: JOINED_FILTERS,-anonymousAuthenticationFilter,-exceptionTranslationFilter,-authenticationProcessingFilter,-securityContextPersistenceFilter,-rememberMeAuthenticationFilter
@@ -160,42 +148,6 @@ grails:
                             access:
                                 - permitAll
                         -
-                            pattern: /index
+                            pattern: /api/**
                             access:
                                 - permitAll
-                        -
-                            pattern: /index.gsp
-                            access:
-                                - permitAll
-                        -
-                            pattern: /shutdown
-                            access:
-                                - permitAll
-                        -
-                            pattern: /assets/**
-                            access:
-                                - permitAll
-                        -
-                            pattern: /**/js/**
-                            access:
-                                - permitAll
-                        -
-                            pattern: /**/css/**
-                            access:
-                                - permitAll
-                        -
-                            pattern: /**/images/**
-                            access:
-                                - permitAll
-                        -
-                            pattern: /**/favicon.ico/**
-                            access:
-                                - permitAll
-                        -
-                          pattern: /bands/**
-                          access:
-                              - permitAll
-                        -
-                          pattern: /events/**
-                          access:
-                              - permitAll

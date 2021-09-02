@@ -1,4 +1,5 @@
 import bandevents.grails4.Band
+import bandevents.grails4.Event
 
 model {
     List<Band> bands
@@ -8,5 +9,12 @@ json {
     bands bands, { Band band ->
         id band.id
         name band.name
+        events band.events, { Event event ->
+            name event.name
+            date event.date
+            bands event.bands, { Band participant ->
+                name participant.name
+            }
+        }
     }
 }

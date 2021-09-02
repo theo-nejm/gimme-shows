@@ -1,0 +1,7 @@
+import bandevents.grails4.User
+
+model {
+    User user
+}
+
+json g.render(template: 'user', model: [user: user])
