@@ -5,13 +5,5 @@ model {
     List<Event> events
 }
 json {
-    events events, { Event event ->
-        id event.id
-        name event.name
-        date event.date
-        bands event.bands, { Band band ->
-            id band.id
-            name band.name
-        }
-    }
+    events g.render(template: 'event', collection: events, var: 'event')
 }

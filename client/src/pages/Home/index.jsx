@@ -37,7 +37,7 @@ export function Home() {
                         </div>
                         <div className='bottom'>
                             <h3>{!isLogged ? 'How to get started?' : 'Now you are logged in'}</h3>
-                            <p>{!isLogged ? 'To access another pages, you you must log in' : 'You can access another pages'}</p>
+                            <p>{!isLogged ? 'To access another pages, you must log in' : 'You can access another pages'}</p>
                             <p className='tip'>{
                                 userAdmin
                                 ? "You are logged as a admin, be careful with your power"

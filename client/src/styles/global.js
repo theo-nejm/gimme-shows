@@ -22,6 +22,26 @@ export const GlobalStyle = createGlobalStyle`
         height: 2rem;
         outline: none;
     }
+    
+    select {
+        outline: none;
+        padding: 1rem;
+        
+        option {
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: .25rem;
+            border-radius: .25rem;
+            border: 1px solid #CCCEEE;
+            
+            &:checked {
+                background: none;
+                border-color: #5454FA;
+            }
+        }
+    }
 
     ul {
         list-style: none;

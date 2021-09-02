@@ -38,6 +38,8 @@ export const Container = styled.header`
     top: 0;
     left: 0;
     
+    z-index: 100;
+    
     h1 {
         font-size: 1.6rem;
         

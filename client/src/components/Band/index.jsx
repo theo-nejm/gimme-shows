@@ -20,8 +20,8 @@ export const Band = ({ band }) => {
     bandModel.setData(band);
 
     async function handleDelete() {
-        setIsDeleted(true);
         await bandModel.remove()
+        setIsDeleted(true);
     }
 
     useEffect(() => {
