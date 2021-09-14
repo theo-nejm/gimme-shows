@@ -1,12 +1,12 @@
-import React, {useEffect, useState} from 'react';
-import {Header} from "../../components/Header";
+import React, { useEffect, useState } from 'react';
+import { Header } from "../../components/Header";
 import {PageContainer} from "../../styles/global";
 import { Container } from "./style";
-import {useHistory} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Auth from "../../security/auth";
 import axios from "../../services/axios/instance";
-import {Event} from "../../components/Event";
-import {EventModal} from "../../components/EventModal";
+import { Event } from "../../components/Event";
+import { EventModal } from "../../components/EventModal";
 
 export function Events() {
     const [data, setData] = useState(null);

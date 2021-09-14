@@ -1,11 +1,11 @@
-import React, {useRef, useState} from 'react';
+import React, { useRef, useState } from 'react';
 import {PageContainer} from "../../styles/global";
 import {Container} from "./style";
 import band from "../../assets/band.svg";
 import axios from '../../services/axios/instance'
 import Auth, { checkResponseStatus } from '../../security/auth';
-import {Header} from "../../components/Header";
-import {useHistory} from "react-router-dom";
+import { Header } from "../../components/Header";
+import { useHistory } from "react-router-dom";
 
 export function Login() {
     const usernameRef = useRef();

@@ -6,6 +6,10 @@ class Event {
     String name
     Date date
 
+    String country
+    String state
+    String city
+
     static hasMany = [bands: Band]
 
     static constraints = {

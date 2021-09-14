@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import band from '../../assets/band.svg'
-import {Container} from "./style";
-import {PageContainer} from "../../styles/global";
-import {Header} from "../../components/Header";
+import { Container } from "./style";
+import { PageContainer } from "../../styles/global";
+import { Header } from "../../components/Header";
 import Auth from "../../security/auth";
 
 export function Home() {

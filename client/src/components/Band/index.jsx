@@ -18,6 +18,7 @@ export const Band = ({ band }) => {
     const [isExpanded, setIsExpanded] = useState(false);
 
     bandModel.setData(band);
+    if(!Object.keys(bandModel.get()).includes('events')) bandModel.set({ events: [] });
 
     async function handleDelete() {
         await bandModel.remove()
@@ -26,7 +27,6 @@ export const Band = ({ band }) => {
 
     useEffect(() => {
         bandModel.set({name: newName})
-        console.log(bandModel)
     }, [newName])
 
     if(isDeleted) return null;

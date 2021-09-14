@@ -1,6 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {Container} from "./style";
-import {Model} from "rest-models";
 import { AiOutlineZoomIn, AiOutlineZoomOut } from 'react-icons/ai';
 import { HiOutlinePencilAlt } from 'react-icons/hi';
 import { BiTrashAlt } from 'react-icons/bi';

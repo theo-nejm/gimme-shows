@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import { PageContainer } from '../../styles/global';
 import { Container } from './style';
-import {Header} from "../../components/Header";
+import { Header } from "../../components/Header";
 import { Band } from '../../components/Band';
 import axios from '../../services/axios/instance';
 import { BandModal } from "../../components/BandModal";
 import Auth from '../../security/auth';
-import {useHistory} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 export function Bands() {
     const [data, setData] = useState(null);

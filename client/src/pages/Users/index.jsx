@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { PageContainer } from "../../styles/global";
-import {Container} from "./style";
+import { Container } from "./style";
 import Auth from '../../security/auth';
-import {useHistory} from "react-router-dom";
-import {Header} from "../../components/Header";
-import {User} from "../../components/User";
+import { useHistory } from "react-router-dom";
+import { Header } from "../../components/Header";
+import { User } from "../../components/User";
 import axios from '../../services/axios/instance';
 import { UserModal } from '../../components/UserModal';
 

@@ -1,6 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {Overlay} from "./style";
-import {Model} from "rest-models";
 import axios from '../../services/axios/instance';
 
 function formatDate(date) {
